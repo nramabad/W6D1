@@ -98,3 +98,61 @@ const pavlov = new Dog("Pavlov");
 // notMarkovSays("meow", "me");
 // Pavlov says meow to me!
 // true
+
+
+function curriedSum(numArgs) {
+  let numbers = [];
+  function _curriedSum(num) {
+    numbers.push(num);
+    if (numbers.length === numArgs) {
+      let sum = 0; 
+      numbers.forEach((el) => {
+        sum += el;
+      });
+      return sum;
+    } else {
+      return _curriedSum;
+    }
+  }
+  return _curriedSum;
+}
+
+// const sum1 = curriedSum(4);
+// console.log(sum1(5)(30)(20)(1));
+
+Function.prototype.curry = function(numArgs) {
+  let args = [];
+  
+  // this is the function says!
+  let insideFunc = (arg) => {
+    console.log(args);
+    args.push(arg);
+    
+    if (args.length != numArgs) {
+      return insideFunc;
+    } else {
+     return this.apply(null, args);
+   }
+  };
+  return insideFunc;   
+};
+// Function.prototype.curry = function(numArgs) {
+//   let args = [];
+//   // this is the function says!
+//   let insideFunc = (arg) => {
+// 
+//     if (args.length != numArgs) {
+//       args.push(arg);
+//       return insideFunc;
+//     } else {
+//      return curry;
+//      this
+//    }
+//   };
+// 
+// };
+
+
+
+
+

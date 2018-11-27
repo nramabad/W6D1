@@ -117,8 +117,6 @@ function curriedSum(numArgs) {
   return _curriedSum;
 }
 
-// const sum1 = curriedSum(4);
-// console.log(sum1(5)(30)(20)(1));
 
 Function.prototype.curry = function(numArgs) {
   let args = [];
